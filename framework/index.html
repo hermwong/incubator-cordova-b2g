@@ -11,15 +11,26 @@
     <script type="text/javascript" src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
     -->
 
+    <script type="text/javascript" src="js/devicelight.js"></script>
     <script type="text/javascript" src="js/geolocation.js"></script>
     <script type="text/javascript" src="js/networkinformation.js"></script>
+    <script type="text/javascript" src="js/orientation.js"></script>
     <script type="text/javascript" src="js/vibrate.js"></script>
 
-    <script>
-      
+    <script type="text/javascript">
+
       function showResult(strResult) {
         x$("#results").html("inner", strResult);
       }
+
+      function deviceLightDemoOn() {
+        addDeviceLightListener();
+      }
+
+      function deviceLightDemoOff() {
+        removeDeviceLightListener();
+      }
+
 
   </script>
 
@@ -31,12 +42,12 @@
     <button onclick="showNetworkInfo(showResult);">Show Network Info</button><br/>
     <button onclick="showCurrentPosition(showResult);">Show Current Position</button><br/>
     <button onclick="vibrate(1000);">Vibrate</button><br/>
- 
-
+    <button onclick="deviceLightDemoOn();">Enable Device Light Demo</button>
+    <button onclick="deviceLightDemoOff();">Disable Device Light Demo</button>
 
     <div id="results">blah</div>
   </body>
-  <script>
+  <script type="text/javascript">
 
 
     var gManifestName = "/manifest.webapp";
