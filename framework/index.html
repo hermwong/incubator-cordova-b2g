@@ -31,6 +31,14 @@
         removeDeviceLightListener();
       }
 
+      function displayOrientation() {
+        var event = document.createEvent("Event");
+        event.initEvent("orientationchange", true, true);
+        //event.customData = getYourCustomData();
+        window.dispatchEvent(event);
+       // window.dispatchEvent("orientationchange");
+      }
+
 
   </script>
 
@@ -43,7 +51,8 @@
     <button onclick="showCurrentPosition(showResult);">Show Current Position</button><br/>
     <button onclick="vibrate(1000);">Vibrate</button><br/>
     <button onclick="deviceLightDemoOn();">Enable Device Light Demo</button>
-    <button onclick="deviceLightDemoOff();">Disable Device Light Demo</button>
+    <button onclick="deviceLightDemoOff();">Disable Device Light Demo</button><br/>
+    <button onclick="displayOrientation();">Orientation</button><br/>
 
     <div id="results">blah</div>
   </body>

@@ -1,6 +1,6 @@
 function onorientationchange(evt) {
 	//alert("Screen orientation state is " + screen.orientation);
-	alert("Screen orientation state is " + evt.orientation);
+	alert("Screen orientation state is " + window.screen.orientation);
 }
 
-screen.addEventListener("orientationchange", onorientationchange, false);
+window.addEventListener("orientationchange", onorientationchange, true);
