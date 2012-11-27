@@ -22,11 +22,13 @@ copy:
 ifeq ($(UNAME), Linux)
 #	rsync -av --exclude=".*" framework pending
 	cp -r framework pending
+	cp manifest.webapp pending
 else
 ifeq ($(UNAME), Darwin)
 # Mac OSX
 #	rsync -av --exclude=".*" framework pending
 	cp -r framework pending
+	cp manifest.webapp pending
 else
 # assume windows
 # TODO: make sure hidden files not copied
