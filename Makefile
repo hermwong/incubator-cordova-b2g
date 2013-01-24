@@ -1,42 +1,22 @@
 # build script for Apache Cordova Firefox OS
 # 	-pending directory is used as the staging directory of the mobile app
 
-# TODO: hostname should be retrieved from a config file
-HOSTNAME = framework.com
-MKPATH = mkdir -p
-RMPATH = rm -rf
-UNAME := $(shell uname)
+PORT_DEVICE = 6000
+PORT_LOCAL = 6000
+XPCSHELL ?= ~/dev/mozilla/mc.hg/obj-ff-dbg/dist/bin/xpcshell
+ADB ?= adb
+FOLDER = framework
 
-all :: clean create copy rename
 
-# remove the pending directory & all of its contents
-clean:
-	$(RMPATH) pending
+all :: packaged install
 
-# create pending directory
-create:
-	$(MKPATH) pending
+package:
+	cd ./${FOLDER} && zip -X ./application.zip ./* -x application.zip
 
-# copy all contents of framework directory to pending directory
-copy:
-ifeq ($(UNAME), Linux)
-#	rsync -av --exclude=".*" framework pending
-	cp -r framework pending
-	cp manifest.webapp pending
-	cp manifest.appcache pending
-else
-ifeq ($(UNAME), Darwin)
-# Mac OSX
-#	rsync -av --exclude=".*" framework pending
-	cp -r framework pending
-	cp manifest.webapp pending
-	cp manifest.appcache pending
-else
-# assume windows
-# TODO: make sure hidden files not copied
-endif
-endif
+packaged: package
+	${ADB} push ./${FOLDER}/application.zip /data/local/tmp/b2g/${FOLDER}/application.zip
 
-# rename the framework directory to use the hostname
-rename:
-	mv pending/framework pending/$(HOSTNAME)
+install:
+	${ADB} forward tcp:$(PORT_LOCAL) tcp:$(PORT_DEVICE)
+	@echo "Please confirm the remote debugging prompt on the phone!"
+	${XPCSHELL} build/install.js ${FOLDER} $(PORT_LOCAL)
