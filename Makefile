@@ -3,7 +3,7 @@
 
 PORT_DEVICE = 6000
 PORT_LOCAL = 6000
-XPCSHELL ?= ~/dev/mozilla/mc.hg/obj-ff-dbg/dist/bin/xpcshell
+XPCSHELL ?= ~/Documents/mozilla/mozilla-central/obj-x86_64-apple-darwin11.4.2/dist/bin/xpcshell
 ADB ?= adb
 FOLDER = framework
 
