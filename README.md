@@ -12,19 +12,24 @@ Prerequisites:
 How to get started:
 =====================
 
-1. Install XULRunner, instructions can be found here: https://developer.mozilla.org/en-US/docs/XULRunner
-2. Bootstrap your computer so to make sure that you have all the prerequisites for building Firefox
+1. Bootstrap your computer so to make sure that you have all the prerequisites for building Firefox
 - instructions can be found under the "Build prerequisites" section on the following page: https://developer.mozilla.org/en-US/docs/Simple_Firefox_build
-3. Clone the Firefox repository: git clone git://github.com/mozilla/mozilla-central.git
-4. Build Firefox by following the instructions under the "Building" on the following page: https://developer.mozilla.org/en-US/docs/Simple_Firefox_build
-5. Clone the cordova-firefoxos repository
-6. Modify the XPCSHELL constant in the Makefile to point to the location of xpcshell on your computer
+2. Clone the Firefox repository: git clone git://github.com/mozilla/mozilla-central.git
+3. Build Firefox by following the instructions under the "Building" on the following page: https://developer.mozilla.org/en-US/docs/Simple_Firefox_build
+4. Clone the cordova-firefoxos repository
 
-Deploying to device:
+If Deploying to device:
 
-7a. Make sure the Firefox OS device has remote debugging enabled. To enable remote debugging navigate to the following settings on the device: Settings->Device Information->More Information->Developer->Remote Debugging.
-8a. Run the Makefile by typing "make" into the command line.
+5. Modify the XPCSHELL constant in the Makefile to point to the location of xpcshell on your computer
+6. Modify the ADB constant in the Makefile to point to the location of adb on your computer
+7. Make sure the Firefox OS device has remote debugging enabled. To enable remote debugging navigate to the following settings on the device: Settings->Device Information->More Information->Developer->Remote Debugging.
+8. Run the Makefile by typing "make" into the command line.
+9. The device should prompt you to allow a remote connection, your Apache Cordova Firefox OS app will be installed to the device once you accept the prompt. 
 
-Deploying to simulator:
+If Deploying to simulator:
+
+7. Open the Firefox OS simulator add-on by going to Tools->Web Developer->Firefox OS Simulator
+8. Start the simulator
+9. Click on the Add Directory button and then choose the manifest.webapp file in the framework folder of your Apache Cordova app.
 
 
